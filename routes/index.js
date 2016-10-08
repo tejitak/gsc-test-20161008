@@ -16,6 +16,7 @@ router.get('/webhook', function(req, res) {
 
 router.post('/webhook/', function (req, res) {
   const events = req.body.entry[0].messaging;
+  console.log(JSON.stringify(events))
   for (i = 0; i < events.length; i++) {
     const event = req.body.entry[0].messaging[i];
     if (event.message && event.message.text) {
