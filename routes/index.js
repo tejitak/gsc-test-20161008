@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/webhook', function(req, res) {
 
- if (req.query['hub.verify_token'] === 'tokenvon') {
+ if (req.query['hub.verify_token'] === 'token0000') {
    res.send(req.query['hub.challenge']);
  } else {
    res.send('Error, wrong validation token');
@@ -22,6 +22,7 @@ router.post('/webhook/', function (req, res) {
  const events = req.body.entry[0].messaging;
  for (i = 0; i < events.length; i++) {
    const event = req.body.entry[0].messaging[i];
+   const sender = event.sender.id;
    if (event.message && event.message.text) {
      const text = event.message.text;
      console.log(text)
